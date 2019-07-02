@@ -8,11 +8,9 @@ oeis = [l.strip() for l in open("oeis.txt").readlines()]
 stats = Counter()
 
 ATTEMPTS = 100
-for a in range(ATTEMPTS):
+for attempt in range(ATTEMPTS):
 	sa = choice(oeis).split(",")
 	sb = choice(oeis).split(",")
-	
-
 	
 	a = [int(i) for i in sa[1:] if i]
 	b = [int(i) for i in sb[1:] if i]
@@ -23,14 +21,10 @@ for a in range(ATTEMPTS):
 	mi = min(la,lb)
 
 	last = a[mi-1]
-	text = ""
 
 	deltas = []
 	delta = None
-	for i in range(mi-1,0,-1):
-		text = str(a[i])+"+"+str(b[i])+"/("+text+")"
-		#print(text)
-		#print(i,f"{a[i]}+{b[i]}/{last}")
+	for i in range(mi-1):
 		if last == 0:
 			#print("Last == 0")
 			stats["l=0"] += 1
